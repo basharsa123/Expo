@@ -4,20 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Company extends Model implements HasMedia
+class product extends Model implements HasMedia
 {
+    /** @use HasFactory<\Database\Factories\ProductFactory> */
     use HasFactory, InteractsWithMedia;
-    protected  $fillable = ['name','desc','phone'];
+    protected $fillable = ['name','desc' , "company_id"];
     protected $hidden= ["created_at" , "update_at"];
-    /** @use HasFactory<\Database\Factories\CompanyFactory> */
-    public function products()
+
+    public function company()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(company::class);
     }
-
-
 }

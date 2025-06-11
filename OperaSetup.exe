@@ -1,0 +1,377 @@
+{
+	"info": {
+		"_postman_id": "2cdfe1c3-7c28-40bf-a7a3-08140f7987f1",
+		"name": "expo Auth",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" width=\"2162\" height=\"1530\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41278632"
+	},
+	"item": [
+		{
+			"name": "user_authenticate",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "bypass-tunnel-reminder",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://expo.test/api/auth/register?name=bashar&password=password&password_confirmation=password&email=basharsawas5219348@gmail.com",
+							"protocol": "http",
+							"host": [
+								"expo",
+								"test"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "bashar"
+								},
+								{
+									"key": "password",
+									"value": "password"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "password"
+								},
+								{
+									"key": "email",
+									"value": "basharsawas5219348@gmail.com"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "bypass-tunnel-reminder",
+										"value": "1",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://expo.test/api/auth/register?name=saad&password=password&password_confirmation=password&email=saaddawara12310@gmail.com",
+									"protocol": "http",
+									"host": [
+										"expo",
+										"test"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "saad"
+										},
+										{
+											"key": "password",
+											"value": "password"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "password"
+										},
+										{
+											"key": "email",
+											"value": "saaddawara12310@gmail.com"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.25.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Jun 2025 16:57:01 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User registered successfully\",\n    \"token\": \"2|1eARKJRVsavrNF69id1uSCziXZTkRzJCUbLonflP1db05d5e\",\n    \"user\": {\n        \"name\": \"saad\",\n        \"email\": \"saaddawara12310@gmail.com\",\n        \"updated_at\": \"2025-06-06T16:57:01.000000Z\",\n        \"created_at\": \"2025-06-06T16:57:01.000000Z\",\n        \"id\": 2\n    }\n}"
+						},
+						{
+							"name": "register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "bypass-tunnel-reminder",
+										"value": "1",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://expo.test/api/auth/register?name=bashar&password=password&password_confirmation=password&email=basharsawas5219348@gmail.com",
+									"protocol": "http",
+									"host": [
+										"expo",
+										"test"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "bashar"
+										},
+										{
+											"key": "password",
+											"value": "password"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "password"
+										},
+										{
+											"key": "email",
+											"value": "basharsawas5219348@gmail.com"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.25.2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Jun 2025 17:17:59 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User registered successfully\",\n    \"token\": \"3|wGwiCwfyfH6SYXA3EUxjKgUgWB36RCHAsz88NKk788a532e7\",\n    \"user\": {\n        \"name\": \"bashar\",\n        \"email\": \"basharsawas5219348@gmail.com\",\n        \"updated_at\": \"2025-06-06T17:17:59.000000Z\",\n        \"created_at\": \"2025-06-06T17:17:59.000000Z\",\n        \"id\": 3\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://expo.test/api/auth/login?password=password&email=basharsawas5219348@gmail.com",
+							"protocol": "http",
+							"host": [
+								"expo",
+								"test"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": "password"
+								},
+								{
+									"key": "email",
+									"value": "basharsawas5219348@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://expo.test/api/auth/logout",
+							"protocol": "http",
+							"host": [
+								"expo",
+								"test"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://expo.test/api/auth/show",
+							"protocol": "http",
+							"host": [
+								"expo",
+								"test"
+							],
+							"path": [
+								"api",
+								"auth",
+								"show"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "5|L1evcbjvrXku1QBwSMoDR1bTgAgPMfEelckvCFs37428cb25",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
