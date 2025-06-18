@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 use Laravel\Sanctum\HasApiTokens;
 
 class AuthController extends Controller
@@ -42,7 +43,11 @@ class AuthController extends Controller
                 'token' => $token,
                 'user' => new  UserResource($user),
             ],201);
-        }catch(\Exception $e)
+        }catch (ValidationException $ve) {
+           return response()->json([
+               'error' => $ve->errors()
+           ], 422);
+       }catch(\Exception $e)
         {
             return response()->json(["error" => $e->getMessage()],500);
         }
@@ -72,6 +77,10 @@ class AuthController extends Controller
                 'token' => $user->createToken('LoginToken')->plainTextToken,
                 'user' => new UserResource($user),
             ],201);
+        }catch (ValidationException $ve) {
+            return response()->json([
+                'error' => $ve->errors()
+            ], 422);
         }catch(\Exception $e)
         {
             return response()->json(["error" => $e->getMessage()],500);
@@ -85,7 +94,7 @@ class AuthController extends Controller
         try {
             $request->user()->currentAccessToken()->delete();
             return response()->json(['message' => 'Logged out successfully']);
-        } catch (\Exception $e) {
+        }catch (\Exception $e) {
             return response()->json([
                 'message' => 'Logout failed',
                 'error'   => $e->getMessage(),

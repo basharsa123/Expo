@@ -112,7 +112,7 @@ class ProductController extends Controller
                 "data" => new ProductResource($product)
             ], 201);
         }catch(ValidationException $ve){
-            return response()->json([ "error" => $ve->errors() ], 404);
+            return response()->json([ "error" => $ve->errors() ], 422);
         }catch(\Exception $e){
             return response()->json([ "error" => $e ], 400);
         }
