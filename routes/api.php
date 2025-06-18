@@ -22,5 +22,6 @@ Route::group(
     Route::get('/show', [AuthController::class, 'show'])->middleware('auth:sanctum'); // middleware is too important
     Route::delete('/logout', [AuthController::class, 'logout'])->middleware("auth:sanctum"); // middleware is too important
 });
-Route::resource("company" , \App\Http\Controllers\CompanyController::class , ['except' => ['create' , 'show']]);
-Route::resource("product" , \App\Http\Controllers\ProductController::class , ['except' => ['create' , 'show']]);
+Route::resource("company" , \App\Http\Controllers\CompanyController::class , ['except' => ['create']]);
+Route::resource("product" , \App\Http\Controllers\ProductController::class , ['except' => ['create']]);
+Route::resource("lecture" , \App\Http\Controllers\LectureController::class , ['except' => ['create']]);
