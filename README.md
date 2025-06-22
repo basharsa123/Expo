@@ -30,13 +30,13 @@
 - ### 3. registration:
 	- #### 1. lecture 
 	attributes :
-    	- title (max: 15 letter )
-        - description (min: 15 word | max: 50 word)
-        - date (date->{ex:2025-08-01 05:01:11})
-        - place 
-        - mentor (string)
-        - location (string)
-
+    - title (max: 15 letter )
+    - description (min: 15 word | max: 50 word)
+    - date (date->{ex:2025-08-01 05:01:11})
+    - place 
+    - mentor (string)
+    - location (string)
+    
     - #### 2. workshop
 	attribute:
 	- name
