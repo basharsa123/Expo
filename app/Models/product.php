@@ -16,6 +16,6 @@ class product extends Model implements HasMedia
 
     public function company()
     {
-        return $this->belongsTo(company::class);
+        return $this->belongsTo(Company::class);
     }
 }
