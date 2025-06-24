@@ -53,6 +53,7 @@ class WorkshopController extends Controller
                     "started_date" => "required|date_format:Y-m-d H:i:s",
                     "finished_date" => "required|date_format:Y-m-d H:i:s",
                     "place"=>"required|string",
+                    "mentor"=>"required|string",
                 ],
                 [
                     "title.required" => "Name is required",
@@ -63,6 +64,8 @@ class WorkshopController extends Controller
                     "finished_date.date" => "it should be a date formated in YYYY-MM-DD H:m:s format",
                     "place.required" => "place is required",
                     "place.string" => "place should be a word",
+                    "mentor.required"=> "the mentor name is required",
+                    "mentor.string"=> "the mentor name should be a string"
                 ]);
             //?store
             workshop::create($credentials);
@@ -93,6 +96,7 @@ class WorkshopController extends Controller
                     "started_date" => "required|date_format:Y-m-d H:i:s",
                     "finished_date" => "required|date_format:Y-m-d H:i:s",
                     "place"=>"required|string",
+                    "mentor"=>"required|string",
                 ],
                 [
                     "title.required" => "Name is required",
@@ -103,6 +107,8 @@ class WorkshopController extends Controller
                     "finished_date.date" => "it should be a date formated in YYYY-MM-DD H:m:s format",
                     "place.required" => "place is required",
                     "place.string" => "place should be a word",
+                    "mentor.required"=> "the mentor name is required",
+                    "mentor.string"=> "the mentor name should be a string"
                 ]);
             $workshop->update($credentials);
             return response()->json([

@@ -25,6 +25,6 @@ class registeration extends Model
     }
     public function workshop()
     {
-        return $this->belongsTo(Workshop::class);
+        return $this->belongsTo(workshop::class);
     }
 }

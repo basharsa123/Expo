@@ -18,6 +18,7 @@ return new class extends Migration
             $table->dateTime('started_date')->nullable();
             $table->dateTime('finished_date')->nullable();
             $table->string("place");
+            $table->string('mentor');
             $table->timestamps();
         });
     }

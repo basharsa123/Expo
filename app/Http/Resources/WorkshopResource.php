@@ -20,7 +20,8 @@ class WorkshopResource extends JsonResource
             "description" => $this->description,
             "started_date" => $this->started_date->format('Y-m-d H:i:s'),
             "finished_date" => $this->finished_date->format('Y-m-d H:i:s'),
-            "place" => $this->place
+            "place" => $this->place,
+            "mentor" => $this->mentor
         ];
     }
 }
