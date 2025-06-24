@@ -39,14 +39,17 @@ class WorkshopController extends Controller
                 [
                     "title" => "required",
                     "description" => "max:255",
-                    "date" => "required|date_format:Y-m-d H:i:s",
+                    "started_date" => "required|date_format:Y-m-d H:i:s",
+                    "finished_date" => "required|date_format:Y-m-d H:i:s",
                     "place"=>"required|string",
                 ],
                 [
                     "title.required" => "Name is required",
                     "description.max" => "Name cannot be more than 255 characters",
-                    "date.required" => "date is required",
-                    "date.date" => "it should be a date formated in YYYY-MM-DD H:m:s format",
+                    "started_date.required" => "date is required",
+                    "finished_date.required" => "date is required",
+                    "started_date.date" => "it should be a date formated in YYYY-MM-DD H:m:s format",
+                    "finished_date.date" => "it should be a date formated in YYYY-MM-DD H:m:s format",
                     "place.required" => "place is required",
                     "place.string" => "place should be a word",
                 ]);

@@ -12,7 +12,8 @@ class workshop extends Model
     protected $fillable = [
         "title",
         "description",
-        "date",
+        "started_date",
+        "finished_date",
         "place",
     ];
 }

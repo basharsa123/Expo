@@ -18,7 +18,8 @@ class WorkshopResource extends JsonResource
             "id" => $this->id,
             "title" => $this->title,
             "description" => $this->description,
-            "date" => $this->date,
+            "started_date" => $this->started_date,
+            "finished_date" => $this->finished_date,
             "place" => $this->place
         ];
     }
