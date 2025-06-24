@@ -16,4 +16,8 @@ class workshop extends Model
         "finished_date",
         "place",
     ];
+    protected $casts = [
+        "started_date" => "datetime:Y-m-d H:i:s",
+        "finished_date" => "datetime:Y-m-d H:i:s",
+    ];
 }
