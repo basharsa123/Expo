@@ -14,9 +14,9 @@ class Company extends Model implements HasMedia
     protected  $fillable = ['name','desc','phone'];
     protected $hidden= ["created_at" , "update_at"];
     /** @use HasFactory<\Database\Factories\CompanyFactory> */
-    public function products()
+    public function products() : HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(product::class);
     }
 
 
