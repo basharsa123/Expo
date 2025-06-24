@@ -59,7 +59,7 @@ class LectureController extends Controller
                 ],
                 [
                     "title.required" => "Name is required",
-                    "description.max" => "Name cannot be more than 15 characters",
+                    "description.max" => "Name cannot be more than 255 characters",
                     "date.required" => "date is required",
                     "date.date" => "it should be a date formated in YYYY-MM-DD H:m:s format",
                     "place.required" => "place is required",
@@ -102,7 +102,7 @@ class LectureController extends Controller
                     "location"=>"string",
                 ],
                 [
-                    "description.max" => "Name cannot be more than 15 characters",
+                    "description.max" => "Name cannot be more than 255 characters",
                     "date.date" => "it should be a date formated in YYYY-MM-DD H:m:s format",
                     "place.string" => "place should be a word",
                     "location.string" => "location should be a word",
