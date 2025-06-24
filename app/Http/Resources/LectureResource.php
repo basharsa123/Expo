@@ -17,7 +17,7 @@ class LectureResource extends JsonResource
         return [
             "title" => $this->title,
             "description" => $this->description ?? "no description available",
-            "date" => $this->date,
+            "date" => $this->date->format("Y-m-d H:i:s"),
             "place" => $this->place,
             "location" => $this->location,
             "mentor" => $this->mentor
