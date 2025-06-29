@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\registeration;
 use App\Services\TimeSlotService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -19,11 +20,11 @@ class WorkshopResource extends JsonResource
             "id" => $this->id,
             "title" => $this->title,
             "description" => $this->description,
-            "started_date" => $this->started_date->format('Y-m-d'),
-            "finished_date" => $this->finished_date->format('Y-m-d'),
+            "started_date" => $this->started_date->format('Y-m-d H:i:s'),
+            "finished_date" => $this->finished_date->format('Y-m-d H:i:s'),
             "place" => $this->place,
             "mentor" => $this->mentor,
-            "available_slots" => TimeSlotService::generateTimeSlots($this->started_date->format('Y-m-d H:i:s') , $this->finished_date->format('Y-m-d H:i:s')  ,"H:i"),
+        "available_slots" => TimeSlotService::generateTimeSlots($this->started_date->format('Y-m-d H:i:s') , $this->finished_date->format('Y-m-d H:i:s')  ,"H:i" , $this->id),
         ];
     }
 }
