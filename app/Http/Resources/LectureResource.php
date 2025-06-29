@@ -20,7 +20,7 @@ class LectureResource extends JsonResource
             "date" => $this->date->format("Y-m-d H:i:s"),
             "place" => $this->place,
             "location" => $this->location,
-            "mentor" => $this->mentor
+            "speaker" => $this->mentor
         ];
     }
 }
