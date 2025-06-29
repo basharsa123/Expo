@@ -50,7 +50,9 @@ class CompanyController extends Controller
                     "name" => "required|string|max: 15",
                     "desc" => "required|string",
                     "phone" => ["required", "numeric"],
-                    "image" => "required|image|mimes:jpeg,png,jpg,gif,svg"
+                    "image" => "required|image|mimes:jpeg,png,jpg,gif,svg",
+                    "email" => "required|email",
+                    "address" => "required|string",
                 ],
                 [
                     "name.required" => "Name is required",
@@ -58,7 +60,11 @@ class CompanyController extends Controller
                     "desc.required" => "Description is required",
                     "phone.required" => "Phone is required",
                     "image.required" => "Image is required",
-                    "image.mimes" => "Image file is not recognized , try files with jpeg, png,jpg,gif,svg"
+                    "image.mimes" => "Image file is not recognized , try files with jpeg, png,jpg,gif,svg",
+                    "email.required" => "Email is required",
+                    "email.email" => "Email is not valid",
+                    "address.required" => "Address is required",
+                    "address.string" => "Address is not valid",
                 ]);
             //?store
 
@@ -89,11 +95,15 @@ class CompanyController extends Controller
             $credentials = $request->validate([
                 "name" =>  "string|max: 15",
                 "desc" =>  "string",
+                "email" => "email",
+                "address" => "string",
                 "phone" => "numeric",
             ],
             [
                 "name.max" => "Name cannot be more than 15 characters",
-                "desc.string" => "should be string",
+                "desc.string" => "description is not valid",
+                "email.email" => "Email is not valid",
+                "address.string" => "Address is not valid",
                 "phone.numeric" => "Phone should be number",
             ]);
             if (!$company) {

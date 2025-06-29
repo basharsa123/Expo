@@ -19,7 +19,8 @@ class ProductResource extends JsonResource
                 "name" => $this->name,
                 "desc" => $this->desc,
                 "imageUrl" => $this->getFirstMediaUrl(),
-                "company" => $this->company->name,
+                "company_name" => $this->company->name,
+                "company_desc" => $this->company->desc,
         ];
     }
 }

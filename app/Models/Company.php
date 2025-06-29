@@ -11,7 +11,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Company extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
-    protected  $fillable = ['name','desc','phone'];
+    protected  $fillable = ['name','desc','phone','email','address'];
     protected $hidden= ["created_at" , "update_at"];
     /** @use HasFactory<\Database\Factories\CompanyFactory> */
     public function products() : HasMany

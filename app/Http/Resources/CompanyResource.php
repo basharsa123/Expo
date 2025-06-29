@@ -19,6 +19,8 @@ class CompanyResource extends JsonResource
         "id" =>$this->id,
             "name" => $this->name,
             "description" => $this->desc ,
+            "email" => $this->email ,
+            "address" => $this->address ,
             "phone" => $this->phone,
             "imageUrl" => $this->getFirstMediaUrl(),
             "products" => ProductResource::collection($this->products)
