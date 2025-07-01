@@ -19,7 +19,7 @@ class LectureController extends Controller
         try{
             $lecture = lecture::all();
             if ($lecture->isEmpty()) {
-                return response()->json(["there are no companies available"], 200);
+                return response()->json(["there are no lectures available"], 200);
             }
             return response()->json(LectureResource::collection($lecture), 200);
         }catch(\Exception $e){
@@ -33,7 +33,7 @@ class LectureController extends Controller
     {
         try{
             if(!$lecture){
-                return response()->json("the company is not found",404);
+                return response()->json("the lecture is not found",404);
             }
             return response()->json(new LectureResource($lecture), 200);
         }catch(\Exception $e){
@@ -52,26 +52,32 @@ class LectureController extends Controller
                 [
                     "title" => "required",
                     "description" => "max:255",
-                    "date" => "required|date_format:Y-m-d H:i:s",
+                    "date" => "required|date_format:Y-m-d",
                     "place"=>"required|string",
-                    "location"=>"required|string",
+                    "started_at"=>"required||date_format:H:i",
+                    "finished_at"=>"required||date_format:H:i",
                     "mentor"=>"required",
+                    "mentor_job_title"=>"required",
+                    "mentor_pic"=>"required|image|mimes:jpeg,png,jpg,gif,svg,webp",
                 ],
                 [
                     "title.required" => "Name is required",
                     "description.max" => "Name cannot be more than 255 characters",
                     "date.required" => "date is required",
-                    "date.date" => "it should be a date formated in YYYY-MM-DD H:m:s format",
+                    "date.date" => "it should be a date formated in YYYY-MM-DD format",
+                    "started_at.date" => "it should be a date formated in H:m format",
+                    "finished_at.date" => "it should be a date formated in H:m format",
                     "place.required" => "place is required",
                     "place.string" => "place should be a word",
-                    "location.required" => "location is required",
-                    "location.string" => "location should be a word",
                     "mentor.required" => "mentor is required",
+                    "mentor_job_title.required" => "mentor job title is required",
+                    "mentor_pic.required" => "mentor pic is required",
+                    "mentor_pic.image" => "mentor_pic should be an image",
+                    "mentor_pic.mimes" => "Image file is not recognized , try files with jpeg, png,jpg,gif,svg"
                 ]);
+
             //?store
-
-            Lecture::create($credentials);
-
+            Lecture::create($credentials)->addMediaFromRequest('mentor_pic')->toMediaCollection();
             //? return verification about storing
 
             return response()->json("the lecture is created", 201);
@@ -97,18 +103,16 @@ class LectureController extends Controller
                 [
                     "title" =>"max:255",
                     "description" => "max:255",
-                    "date" => "date,date_format:Y-m-d H:i:s",
+                    "date" => "date,date_format:Y-m-d",
                     "place"=>"string",
-                    "location"=>"string",
                 ],
                 [
                     "description.max" => "Name cannot be more than 255 characters",
-                    "date.date" => "it should be a date formated in YYYY-MM-DD H:m:s format",
-                    "place.string" => "place should be a word",
-                    "location.string" => "location should be a word",
+                    "date.date" => "it should be a date formated in YYYY-MM-DD format",
+                    "place.string" => "place is invalid",
                 ]);
             if (!$lecture) {
-                return response()->json("the company is not found", 404);
+                return response()->json("the lecture is not found", 404);
             }
             $lecture->update($credentials);
             return response()->json([

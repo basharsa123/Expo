@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->datetime('date');
+            $table->date('date');
             $table->string("place");
-            $table->string("location");
             $table->string('mentor');
+            $table->string('mentor_job_title');
+            $table->time("started_at")->nullable();
+            $table->time("finished_at")->nullable();
             $table->timestamps();
         });
     }

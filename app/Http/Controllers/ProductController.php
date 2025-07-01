@@ -55,14 +55,14 @@ class ProductController extends Controller
                 [
                     "name" => "required|string",
                     "desc" => "required|string",
-                    "image" => "required|image|mimes:jpeg,png,jpg,gif,svg",
+                    "image" => "required|image|mimes:jpeg,png,jpg,gif,svg,webp",
                     "company_name" => "required|string|exists:companies,name",
                 ],
                 [
                     "name.required" => "Name is required",
                     "desc.required" => "Description is required",
                     "image.required" => "Image is required",
-                    "image.mimes" => "Image file is not recognized , try files with jpeg, png,jpg,gif,svg",
+                    "image.mimes" => "Image file is not recognized , try files with jpeg, png,jpg,gif,svg,webp",
                     "company_name.exists" => "Company does not exist",
                     "company_name.string" => "Company name is required",
                     "company_name.required" => "Company name is required",
@@ -96,12 +96,12 @@ class ProductController extends Controller
             $credentials = $request->validate([
                 "name" =>  "string",
                 "desc" =>  "string",
-                "image" =>  "image|mimes:jpeg,png,jpg,gif,svg",
+                "image" =>  "image|mimes:jpeg,png,jpg,gif,svg,webp",
             ],
                 [
                     "name.string" => "should be string",
                     "desc.string" => "should be string",
-                    "image.mimes" => "Image file is not recognized , try files with jpeg, png,jpg,gif,svg",
+                    "image.mimes" => "Image file is not recognized , try files with jpeg, png,jpg,gif,svg,webp",
                 ]);
             if (!$product) {
                 return response()->json("the product is not found", 404);

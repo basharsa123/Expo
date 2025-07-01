@@ -24,7 +24,7 @@ class WorkshopResource extends JsonResource
             "finished_date" => $this->finished_date->format('Y-m-d H:i:s'),
             "place" => $this->place,
             "mentor" => $this->mentor,
-        "available_slots" => TimeSlotService::generateTimeSlots($this->started_date->format('Y-m-d H:i:s') , $this->finished_date->format('Y-m-d H:i:s')  ,"H:i" , $this->id),
+        "available_slots" => TimeSlotService::generateTimeSlots($this->started_date->format('Y-m-d H:i:s') , $this->finished_date->format('Y-m-d H:i:s')  ,"g:i A" , $this->id),
         ];
     }
 }

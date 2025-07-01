@@ -50,7 +50,7 @@ class CompanyController extends Controller
                     "name" => "required|string|max: 15",
                     "desc" => "required|string",
                     "phone" => ["required", "numeric"],
-                    "image" => "required|image|mimes:jpeg,png,jpg,gif,svg",
+                    "image" => "required|image|mimes:jpeg,png,jpg,gif,svg,webp",
                     "email" => "required|email",
                     "address" => "required|string",
                 ],
@@ -60,7 +60,7 @@ class CompanyController extends Controller
                     "desc.required" => "Description is required",
                     "phone.required" => "Phone is required",
                     "image.required" => "Image is required",
-                    "image.mimes" => "Image file is not recognized , try files with jpeg, png,jpg,gif,svg",
+                    "image.mimes" => "Image file is not recognized , try files with jpeg, png,jpg,gif,svg,webp",
                     "email.required" => "Email is required",
                     "email.email" => "Email is not valid",
                     "address.required" => "Address is required",
@@ -98,6 +98,7 @@ class CompanyController extends Controller
                 "email" => "email",
                 "address" => "string",
                 "phone" => "numeric",
+                "image" => "image|mimes:jpeg,png,jpg,gif,svg,webp",
             ],
             [
                 "name.max" => "Name cannot be more than 15 characters",
@@ -105,6 +106,8 @@ class CompanyController extends Controller
                 "email.email" => "Email is not valid",
                 "address.string" => "Address is not valid",
                 "phone.numeric" => "Phone should be number",
+                "image.image" => "Image file is not valid",
+                "image.mimes" => "Image file is not recognized , try files with jpeg, png, jpg,gif,svg,webp",
             ]);
             if (!$company) {
                 return response()->json("the company is not found", 404);

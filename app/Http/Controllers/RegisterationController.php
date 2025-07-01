@@ -7,6 +7,7 @@ use App\Http\Resources\RegisterationResource;
 use App\Models\registeration;
 use App\Models\User;
 use App\Models\workshop;
+use App\Services\TimeSlotService;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -78,9 +79,17 @@ class RegisterationController extends Controller
                     "user_date.required" => "the date is required for registeration",
                     "notes.string" => "the note shouldn't be more than 255 character",
                 ]);
+            //? check if the registeration time is available
+            if(TimeSlotService::checkDateRegistered($credentials["workshop_id"] , $credentials["user_date"] ))
+            {
+                return response()->json("Sorry, this date for workshop is already registered" , 409);
+            }
+            if(TimeSlotService::checkIfDateInWorkshop($credentials["workshop_id"] , $credentials["user_date"]))
+            {
+                return response()->json("the date is not in the workshop dates" , 409);
+            }
             //?store
             registeration::create($credentials);
-            //? return response()->json($credentials, 201);
             //? return verification about storing
             return response()->json("you have been registerated", 201);
         }catch (ValidationException $ve) {

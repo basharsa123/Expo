@@ -17,6 +17,7 @@ class TimeSlotService
 
     public static function checkDateRegistered($workshop_id , $current_date)
     {
+        $current_date = new \DateTime($current_date);
     $workshop_registerations = registeration::where("workshop_id", $workshop_id)->get();
     foreach($workshop_registerations as $workshop_registeration) {
         if($workshop_registeration->user_date == $current_date) {
@@ -44,10 +45,18 @@ class TimeSlotService
                 $current = $next ;
                 continue;
             }
-            $slots[] = "{$current->format('h:i A')} - {$next->format('h:i A')}";
+            $slots[] = "{$current->format($format)} - {$next->format($format)}";
             $current = $next;
             }
         return $slots;
+    }
+    public static function checkIfDateInWorkshop($workshop_id, $date)
+    {
+        $workshop = workshop::find($workshop_id);
+        if($workshop->started_date > $date || $workshop->finished_date < $date){
+            return true;
+        }
+        return false;
     }
 
 }

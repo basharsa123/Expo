@@ -18,7 +18,7 @@ class RegisterationResource extends JsonResource
             "id" =>$this->id,
             "user" => new UserResource($this->user),
             "workshop" => new WorkshopResource($this->workshop),
-            "user_date" => $this->user_date->format("Y-m-d H:i:s"),
+            "user_date" => $this->user_date->format("g:i A"),
             "notes" => $this->notes
         ];
     }

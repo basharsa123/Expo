@@ -15,12 +15,16 @@ class LectureResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "title" => $this->title,
-            "description" => $this->description ?? "no description available",
-            "date" => $this->date->format("Y-m-d H:i:s"),
-            "place" => $this->place,
-            "location" => $this->location,
-            "speaker" => $this->mentor
+            "id" => $this->id,
+                "title" => $this->title,
+                "description" => $this->description ?? "no description available",
+                "date" => $this->date->format("Y-m-d"),
+                "started_at" => $this->started_at->format("g:i A"),
+                "finished_at" => $this->finished_at->format("g:i A"),
+                "place" => $this->place,
+                "speaker" => $this->mentor,
+                "speaker_job_title" => $this->mentor_job_title ?? "no description available",
+                "speaker_imageUrl" => $this->getFirstMediaUrl()
         ];
     }
 }

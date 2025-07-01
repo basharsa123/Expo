@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "0d588637-0097-43ca-b4ee-272bf4def22d",
-		"name": "expo",
+		"_postman_id": "e1923ed3-e9f9-4810-9214-519412eb11f1",
+		"name": "expo final",
 		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" width=\"2162\" height=\"1530\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "41278632"
@@ -38,7 +38,7 @@
 									"const jsonData = pm.response.json();\r",
 									"\r",
 									"if (jsonData.token) {\r",
-									"    pm.environment.set(\"token\", jsonData.token);\r",
+									"    pm.globals.set(\"token_local\", jsonData.token);\r",
 									"}"
 								],
 								"type": "text/javascript",
@@ -53,31 +53,13 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/auth/register?name=abd&email=abd@gmail.com&password=password&password_confirmation=password",
+							"raw": "{{base_url}}/auth/register",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"auth",
 								"register"
-							],
-							"query": [
-								{
-									"key": "name",
-									"value": "abd"
-								},
-								{
-									"key": "email",
-									"value": "abd@gmail.com"
-								},
-								{
-									"key": "password",
-									"value": "password"
-								},
-								{
-									"key": "password_confirmation",
-									"value": "password"
-								}
 							]
 						}
 					},
@@ -88,7 +70,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/auth/register?name=saad&password=password&password_confirmation=password&email=saaddawara12310@gmail.com",
+									"raw": "{{base_url}}/auth/register?name=bashar&password=password&password_confirmation=password&email=bashar.test@gmail.com",
 									"host": [
 										"{{base_url}}"
 									],
@@ -99,7 +81,7 @@
 									"query": [
 										{
 											"key": "name",
-											"value": "saad"
+											"value": "bashar"
 										},
 										{
 											"key": "password",
@@ -111,7 +93,7 @@
 										},
 										{
 											"key": "email",
-											"value": "saaddawara12310@gmail.com"
+											"value": "bashar.test@gmail.com"
 										}
 									]
 								}
@@ -173,7 +155,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/auth/register?name=bashar&password=password&password_confirmation=password&email=basharsawas5219348@gmail.com",
+									"raw": "{{base_url}}/auth/register?name=bashar&password=password&password_confirmation=password&email=example.test@gmail.com",
 									"host": [
 										"{{base_url}}"
 									],
@@ -196,15 +178,98 @@
 										},
 										{
 											"key": "email",
-											"value": "basharsawas5219348@gmail.com"
+											"value": "example.test@gmail.com"
 										}
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 22 Jun 2025 14:02:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "PHP/8.2.28"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "platform",
+									"value": "hostinger"
+								},
+								{
+									"key": "panel",
+									"value": "hpanel"
+								},
+								{
+									"key": "content-security-policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "permissions-policy",
+									"value": "geolocation=(), microphone=(), camera=()"
+								},
+								{
+									"key": "Server",
+									"value": "hcdn"
+								},
+								{
+									"key": "x-hcdn-request-id",
+									"value": "23aed5d7018b7e59e326ed685da88d45-srv-edge3"
+								},
+								{
+									"key": "x-hcdn-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "x-hcdn-upstream-rt",
+									"value": "0.310"
+								}
+							],
 							"cookie": [],
-							"body": null
+							"body": "{\n    \"message\": \"User registered successfully\",\n    \"token\": \"22|YUWlIeKB3KoMQwd9Quqgkj6JwbSYJf3EGbDPUsX8c9df3054\",\n    \"user\": {\n        \"id\": 8,\n        \"name\": \"bashar\",\n        \"email\": \"example.test@gmail.com\"\n    }\n}"
 						}
 					]
 				},
@@ -218,7 +283,7 @@
 									"const jsonData = pm.response.json();\r",
 									"\r",
 									"if (jsonData.token) {\r",
-									"    pm.globals.set(\"token\", jsonData.token);\r",
+									"    pm.globals.set(\"token_local\", jsonData.token);\r",
 									"}"
 								],
 								"type": "text/javascript",
@@ -249,7 +314,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/auth/login?email=test@example.com&password=password",
+							"raw": "{{base_url}}/auth/login?email=rafat.halabi1995@gmail.com&password=rr720433",
 							"host": [
 								"{{base_url}}"
 							],
@@ -260,11 +325,11 @@
 							"query": [
 								{
 									"key": "email",
-									"value": "test@example.com"
+									"value": "rafat.halabi1995@gmail.com"
 								},
 								{
 									"key": "password",
-									"value": "password"
+									"value": "rr720433"
 								}
 							]
 						}
@@ -276,7 +341,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/auth/login?password=password&email=basharsawas5219348@gmail.com",
+									"raw": "{{base_url}}/auth/login?password=password&email=saaddawara12310@gmail.com",
 									"host": [
 										"{{base_url}}"
 									],
@@ -291,15 +356,22 @@
 										},
 										{
 											"key": "email",
-											"value": "basharsawas5219348@gmail.com"
+											"value": "saaddawara12310@gmail.com"
 										}
 									]
 								}
 							},
-							"_postman_previewlanguage": null,
-							"header": null,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						},
 						{
 							"name": "login",
@@ -398,9 +470,19 @@
 									}
 								}
 							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
 								"url": {
 									"raw": "{{base_url}}/company",
 									"host": [
@@ -416,9 +498,20 @@
 						},
 						{
 							"name": "show",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "{{base_url}}/company/1",
 									"host": [
@@ -475,13 +568,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/product/1",
+									"raw": "{{base_url}}/product/2",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"product",
-										"1"
+										"2"
 									]
 								}
 							},
@@ -530,12 +623,92 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/lecture/2",
+									"raw": "{{base_url}}/lecture/1",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"lecture",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "workshop",
+					"item": [
+						{
+							"name": "registeration",
+							"item": [
+								{
+									"name": "index",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/registeration",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"registeration"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "show",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/registeration/3",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"registeration",
+												"3"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/workshop",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"workshop"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/workshop/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"workshop",
 										"2"
 									]
 								}
@@ -593,11 +766,21 @@
 												{
 													"key": "image",
 													"type": "file",
-													"src": "postman-cloud:///1f046f03-5508-4490-bf67-2152354e0db8"
+													"src": "postman-cloud:///1efe3f8a-1403-4930-afdf-a0ce69fc02d8"
 												},
 												{
 													"key": "desc",
 													"value": "testing",
+													"type": "text"
+												},
+												{
+													"key": "email",
+													"value": "abohomid.test@gmail.com",
+													"type": "text"
+												},
+												{
+													"key": "address",
+													"value": "aleppo-Halap_al_jadida-alrahmaMosque",
 													"type": "text"
 												}
 											]
@@ -658,7 +841,7 @@
 										"method": "PUT",
 										"header": [],
 										"url": {
-											"raw": "{{base_url}}/company/1?desc=is a programming company&name=raizer",
+											"raw": "{{base_url}}/company/1?desc=is a programming company&name=raizer&address=Aleppo-mohafaza-سوق الأنتاج",
 											"host": [
 												"{{base_url}}"
 											],
@@ -674,6 +857,10 @@
 												{
 													"key": "name",
 													"value": "raizer"
+												},
+												{
+													"key": "address",
+													"value": "Aleppo-mohafaza-سوق الأنتاج"
 												}
 											]
 										}
@@ -746,7 +933,28 @@
 								"header": [],
 								"body": {
 									"mode": "formdata",
-									"formdata": []
+									"formdata": [
+										{
+											"key": "name",
+											"value": "web application",
+											"type": "text"
+										},
+										{
+											"key": "desc",
+											"value": "making aweswome web application for traddings porpose",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/ssawa/Downloads/Telegram Desktop/Poster.jpg"
+										},
+										{
+											"key": "company_name",
+											"value": "raizer",
+											"type": "text"
+										}
+									]
 								},
 								"url": {
 									"raw": "{{base_url}}/product",
@@ -756,8 +964,7 @@
 									"path": [
 										"product"
 									]
-								},
-								"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+								}
 							},
 							"response": [
 								{
@@ -781,7 +988,7 @@
 												{
 													"key": "image",
 													"type": "file",
-													"src": "postman-cloud:///1f046f03-5508-4490-bf67-2152354e0db8"
+													"src": "postman-cloud:///1efe3f8a-1403-4930-afdf-a0ce69fc02d8"
 												},
 												{
 													"key": "company_name",
@@ -968,6 +1175,49 @@
 							"request": {
 								"method": "POST",
 								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "social skills"
+										},
+										{
+											"key": "description",
+											"value": "is a lecture for the importance of social skills"
+										},
+										{
+											"key": "date",
+											"value": "2025-06-12"
+										},
+										{
+											"key": "place",
+											"value": "Amphitheater of hamadani"
+										},
+										{
+											"key": "mentor",
+											"value": "Rafaat"
+										},
+										{
+											"key": "started_at",
+											"value": "11:00"
+										},
+										{
+											"key": "finished_at",
+											"value": "15:00"
+										},
+										{
+											"key": "mentor_job_title",
+											"value": "backend dev",
+											"type": "text"
+										},
+										{
+											"key": "mentor_pic",
+											"type": "file",
+											"src": "postman-cloud:///1eff04e3-dd24-4340-b3c4-6e83266736a5"
+										}
+									]
+								},
 								"url": {
 									"raw": "{{base_url}}/lecture",
 									"host": [
@@ -976,8 +1226,7 @@
 									"path": [
 										"lecture"
 									]
-								},
-								"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+								}
 							},
 							"response": [
 								{
@@ -985,22 +1234,20 @@
 									"originalRequest": {
 										"method": "POST",
 										"header": [],
-										"url": {
-											"raw": "{{base_url}}/lecture?title=social skills&date=2025-06-12 05:25:00&location=shiraton Hotel&place=Amphitheater of hamadani&mentor=dummy&description=working properly",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"lecture"
-											],
-											"query": [
+										"body": {
+											"mode": "formdata",
+											"formdata": [
 												{
 													"key": "title",
 													"value": "social skills"
 												},
 												{
+													"key": "description",
+													"value": "is a lecture for the importance of social skills"
+												},
+												{
 													"key": "date",
-													"value": "2025-06-12 05:25:00"
+													"value": "2025-06-12 05:25"
 												},
 												{
 													"key": "location",
@@ -1012,12 +1259,35 @@
 												},
 												{
 													"key": "mentor",
-													"value": "dummy"
+													"value": "Rafaat"
 												},
 												{
-													"key": "description",
-													"value": "working properly"
+													"key": "started_at",
+													"value": "13:00:00"
+												},
+												{
+													"key": "finished_at",
+													"value": "15:00:00"
+												},
+												{
+													"key": "mentor_job_title",
+													"value": "backend dev",
+													"type": "text"
+												},
+												{
+													"key": "mentor_pic",
+													"type": "file",
+													"src": "postman-cloud:///1eff04e3-dd24-4340-b3c4-6e83266736a5"
 												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}/lecture",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"lecture"
 											]
 										}
 									},
@@ -1130,16 +1400,233 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/lecture/3",
+									"raw": "{{base_url}}/lecture/2",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"lecture",
-										"3"
+										"2"
 									]
 								},
 								"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "workshops",
+					"item": [
+						{
+							"name": "Registeration",
+							"item": [
+								{
+									"name": "store",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/registeration?user_id=1&workshop_id=2&user_date=2025-07-01 09:45:00&notes=hope to be good",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"registeration"
+											],
+											"query": [
+												{
+													"key": "user_id",
+													"value": "1"
+												},
+												{
+													"key": "workshop_id",
+													"value": "2"
+												},
+												{
+													"key": "user_date",
+													"value": "2025-07-01 09:45:00"
+												},
+												{
+													"key": "notes",
+													"value": "hope to be good"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/registeration/6",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"registeration",
+												"6"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "store",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/workshop?title=git skills&description=learn a new skill about git and github and use them in right way&started_date=2025-07-01 09:30&place=stage-2&finished_date=2025-07-01 10:30&mentor=Rafaat",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"workshop"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "git skills"
+										},
+										{
+											"key": "description",
+											"value": "learn a new skill about git and github and use them in right way"
+										},
+										{
+											"key": "started_date",
+											"value": "2025-07-01 09:30"
+										},
+										{
+											"key": "place",
+											"value": "stage-2"
+										},
+										{
+											"key": "finished_date",
+											"value": "2025-07-01 10:30"
+										},
+										{
+											"key": "mentor",
+											"value": "Rafaat"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "store",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/workshop?title=social Skills&description=learn a new skill about talking with people&started_date=2025-07-01 11:30&place=stage-1&finished_date=2025-07-01 14:30&mentor=بشار",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"workshop"
+											],
+											"query": [
+												{
+													"key": "title",
+													"value": "social Skills"
+												},
+												{
+													"key": "description",
+													"value": "learn a new skill about talking with people"
+												},
+												{
+													"key": "started_date",
+													"value": "2025-07-01 11:30"
+												},
+												{
+													"key": "place",
+													"value": "stage-1"
+												},
+												{
+													"key": "finished_date",
+													"value": "2025-07-01 14:30"
+												},
+												{
+													"key": "mentor",
+													"value": "بشار"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								},
+								{
+									"name": "store",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/workshop?title=git skills&description=learn a new skill about git and github and use them in right way&started_date=2025-07-01 09:30&place=stage-2&finished_date=2025-07-01 10:30&mentor=Rafaat",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"workshop"
+											],
+											"query": [
+												{
+													"key": "title",
+													"value": "git skills"
+												},
+												{
+													"key": "description",
+													"value": "learn a new skill about git and github and use them in right way"
+												},
+												{
+													"key": "started_date",
+													"value": "2025-07-01 09:30"
+												},
+												{
+													"key": "place",
+													"value": "stage-2"
+												},
+												{
+													"key": "finished_date",
+													"value": "2025-07-01 10:30"
+												},
+												{
+													"key": "mentor",
+													"value": "Rafaat"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/workshop/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"workshop",
+										"2"
+									]
+								}
 							},
 							"response": []
 						}
@@ -1153,7 +1640,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "Bearer {{token}}",
+				"value": "Bearer {{token_local}}",
 				"type": "string"
 			}
 		]
