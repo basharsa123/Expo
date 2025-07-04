@@ -138,4 +138,16 @@ class LectureController extends Controller
             return response()->json(["error" => $e->getMessage()], 400);
         }
     }
+    public function showFilterByDate($date)
+    {
+        try{
+            $lecture = lecture::whereDate("date",$date)->get();
+            if ($lecture->isEmpty()) {
+                return response()->json(["there are no lectures available"], 200);
+            }
+            return response()->json(LectureResource::collection($lecture), 200);
+        }catch(\Exception $e){
+            return response()->json(["error" => $e->getMessage()], 500);
+        }
+    }
 }
