@@ -72,6 +72,13 @@ class AuthController extends Controller
 
             $user = User::where('email', $request->email)->first();
 
+            //? just be sure if the user is activated
+            if(! $user->activation)
+            {
+                return response()->json([
+                    'message' => 'Your account is not activated'
+                ]);
+            }
             return response()->json([
                 'message' => 'Login successful',
                 'token' => $user->createToken('LoginToken')->plainTextToken,

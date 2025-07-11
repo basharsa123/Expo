@@ -19,6 +19,8 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->alias([
             'verified' => \App\Http\Middleware\EnsureEmailIsVerified::class,
+            'Activation'=> \App\Http\Middleware\Activation::class,
+            'NotActivated'=> \App\Http\Middleware\NotActivated::class,
         ]);
 
         //

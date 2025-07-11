@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'code',
+        'expired_at',
+        'activation'
     ];
 
     /**
@@ -44,5 +47,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    public function generateCode()
+    {
+        $this->timestamps = false;
+        $otp = rand(1001,9998);
+        $this->code = $otp ;
+        $this->expired_at = now()->addminutes(10);
+        $this->save();
     }
 }
