@@ -17,6 +17,7 @@ class LectureResource extends JsonResource
         return [
             "id" => $this->id,
                 "title" => $this->title,
+                "lecture_pic" => $this->getFirstMediaUrl("lecture_pic"),
                 "description" => $this->description ?? "no description available",
                 "date" => $this->date->format("Y-m-d"),
                 "started_at" => $this->started_at->format("g:i A"),
@@ -24,7 +25,7 @@ class LectureResource extends JsonResource
                 "place" => $this->place,
                 "speaker" => $this->mentor,
                 "speaker_job_title" => $this->mentor_job_title ?? "no description available",
-                "speaker_imageUrl" => $this->getFirstMediaUrl()
+                "speaker_imageUrl" => $this->getFirstMediaUrl("mentor_pic")
         ];
     }
 }

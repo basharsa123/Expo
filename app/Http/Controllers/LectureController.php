@@ -51,6 +51,7 @@ class LectureController extends Controller
             $credentials = $request->validate(
                 [
                     "title" => "required",
+                    "lecture_pic" => "required|image|mimes:jpeg,png,jpg,gif,svg",
                     "description" => "max:255",
                     "date" => "required|date_format:Y-m-d",
                     "place"=>"required|string",
@@ -58,7 +59,7 @@ class LectureController extends Controller
                     "finished_at"=>"required||date_format:H:i",
                     "mentor"=>"required",
                     "mentor_job_title"=>"required",
-                    "mentor_pic"=>"required|image|mimes:jpeg,png,jpg,gif,svg,webp",
+                    "mentor_pic"=>"required|image|mimes:jpeg,png,jpg,gif,svg",
                 ],
                 [
                     "title.required" => "Name is required",
@@ -77,7 +78,9 @@ class LectureController extends Controller
                 ]);
 
             //?store
-            Lecture::create($credentials)->addMediaFromRequest('mentor_pic')->toMediaCollection();
+            $lecture_create = Lecture::create($credentials);
+            $lecture_create->addMediaFromRequest('lecture_pic')->toMediaCollection("lecture_pic");
+            $lecture_create->addMediaFromRequest('mentor_pic')->toMediaCollection("mentor_pic");
             //? return verification about storing
 
             return response()->json("the lecture is created", 201);

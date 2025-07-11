@@ -27,4 +27,9 @@ class lecture extends Model implements HasMedia
     ];
     /** @use HasFactory<\Database\Factories\LectureFactory> */
     use HasFactory;
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('mentor_pic')->singleFile();
+        $this->addMediaCollection('lecture_pic')->singleFile();
+    }
 }
