@@ -19,6 +19,7 @@ class WorkshopResource extends JsonResource
         return [
             "id" => $this->id,
             "title" => $this->title,
+            "workshop_pic" => $this->getFirstMediaUrl("workshop_pic"),
             "description" => $this->description,
             "started_date" => $this->started_date->format('Y-m-d H:i:s'),
             "finished_date" => $this->finished_date->format('Y-m-d H:i:s'),

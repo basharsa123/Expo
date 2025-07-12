@@ -50,6 +50,7 @@ class WorkshopController extends Controller
                 [
                     "title" => "required",
                     "description" => "max:255",
+                    "workshop_pic" => "required|image|mimes:jpeg,png,jpg,gif,svg",
                     "started_date" => "required|date_format:Y-m-d H:i",
                     "finished_date" => "required|date_format:Y-m-d H:i",
                     "place"=>"required|string",
@@ -58,6 +59,9 @@ class WorkshopController extends Controller
                 [
                     "title.required" => "Name is required",
                     "description.max" => "Name cannot be more than 255 characters",
+                    "workshop_pic.required" => "The workshop picture is required",
+                    "workshop_pic.image" => "The workshop picture is not an image",
+                    "workshop_pic.mimes" => "Image file is not recognized , try files with jpeg, png,jpg,gif,svg",
                     "started_date.required" => "date is required",
                     "finished_date.required" => "date is required",
                     "started_date.date" => "it should be a date formated in YYYY-MM-DD H:m format",
@@ -68,7 +72,7 @@ class WorkshopController extends Controller
                     "mentor.string"=> "the mentor name should be a string"
                 ]);
             //?store
-            workshop::create($credentials);
+            workshop::create($credentials)->addMediaFromRequest('workshop_pic')->toMediaCollection('workshop_pic');
             //? return response()->json($credentials, 201);
             //? return verification about storing
             return response()->json("the workshop is created", 201);
