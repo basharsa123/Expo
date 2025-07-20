@@ -72,13 +72,6 @@ class AuthController extends Controller
 
             $user = User::where('email', $request->email)->first();
 
-            //? just be sure if the user is activated
-            if(! $user->activation)
-            {
-                return response()->json([
-                    'message' => 'Your account is not activated'
-                ]);
-            }
             return response()->json([
                 'message' => 'Login successful',
                 'token' => $user->createToken('LoginToken')->plainTextToken,
@@ -121,5 +114,12 @@ class AuthController extends Controller
         {
             return response()->json(["error" => $e->getMessage()] , 500);
         }
+    }
+    public function deleteUser(Request $request)
+    {
+        User::where("email" , $request->email);
+        return response()->json([
+            "message" => "the User deleted successfully"
+        ]);
     }
 }

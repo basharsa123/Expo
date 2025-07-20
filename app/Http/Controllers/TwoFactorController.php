@@ -57,7 +57,8 @@ class TwoFactorController extends Controller
             return response()->json([
                 "message" => "Registered Successfully , We Send You A Verification Code To Your Email",
                 "token" => $token,
-                'activation' => $user->activation
+                'activation' => $user->activation,
+                'user' => new UserResource($user)
             ],201);
         }catch (ValidationException $ve) {
             return response()->json([
@@ -69,6 +70,26 @@ class TwoFactorController extends Controller
         }
     }
 
+    public function reSendCode(Request $request)
+    {
+        $user = auth()->user();
+        $user->generateCode();
+
+        // to refresh the User information
+        $user->refresh();
+
+        //send email include the code
+        SendEmailVerification::dispatch($user);
+
+        // to resend the token you got
+        $token = $request->BearerToken();
+
+        return response()->json([
+            'token' => $token ,
+            'activation' => $user->activation,
+            'user' => new  UserResource($user),
+        ],201);
+    }
     public function verifyCode(Request $request)
     {
         try{
@@ -91,7 +112,7 @@ class TwoFactorController extends Controller
                     'message' => 'User registered successfully and verified',
                     "token" => $request->bearerToken(),
                     'activation' => $user->activation,
-                    'user' => new  UserResource($user),
+                    'user' => new UserResource($user),
                 ], 201);
             }
             return response()->json([
@@ -103,24 +124,4 @@ class TwoFactorController extends Controller
             ]);
         }
     }
-        public function reSendCode(Request $request)
-        {
-
-            $user = auth()->user();
-            $user->generateCode();
-
-            // to refresh the User information
-            $user->refresh();
-
-            //send email include the code
-            SendEmailVerification::dispatch($user);
-
-            // to resend the token you got
-            $token = $request->BearerToken();
-
-            return response()->json([
-                'token' => $token ,
-                'activation' => $user->activation,
-            ],201);
-        }
 }
