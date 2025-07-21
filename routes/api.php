@@ -41,7 +41,7 @@ Route::group([
 {
 Route::post('/register', [\App\Http\Controllers\TwoFactorController::class, 'register']);
 Route::post('/verify_code', [\App\Http\Controllers\TwoFactorController::class, 'verifyCode'])->middleware('auth:sanctum');
-Route::post('/resend_code', [\App\Http\Controllers\TwoFactorController::class, 'reSendCode'])->middleware('auth:sanctum','NotActivated');
+Route::get('/resend_code', [\App\Http\Controllers\TwoFactorController::class, 'reSendCode'])->middleware('auth:sanctum','NotActivated');
 });
  Route::get('/qrcode', function (Request $request) {
      $qrImage = QrCode::format('svg')

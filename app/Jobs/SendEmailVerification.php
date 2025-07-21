@@ -15,6 +15,10 @@ class SendEmailVerification implements ShouldQueue
 
     public $user ;
     /**
+     * The maximum number of times the job may be attempted.
+     */
+    public $tries = 4; //number of times can the one make before it stops
+    /**
      * Create a new job instance.
      */
     public function __construct($user)
