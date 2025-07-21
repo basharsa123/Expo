@@ -34,6 +34,13 @@ class lectureRegistrationQr implements ShouldQueue
         // the queue is work
         Log::info("the lecture email for registration qr is sent");
         //?send email with the qr
-        Mail::to($this->user->email)->send(new LectureQr($this->user , $this->lecture , $this->qrImage));
+        Mail::raw("Hello {$this->user->name}, Thank you for verifying the lecture \"{$this->lecture->title}\" , it started at {$this->lecture->started_at} and ended at {$this->lecture->finished_at} .
+         the qr code for registration is :
+         Qrcode
+         we are waiting for you .", function ($message) {
+            $message->to($this->user->email)
+                ->subject("Lecture {$this->lecture->title} registration");
+        });
+//        Mail::to($this->user->email)->send(new LectureQr($this->user , $this->lecture , $this->qrImage));
     }
 }

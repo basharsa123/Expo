@@ -103,8 +103,8 @@ class TwoFactorController extends Controller
             $user = auth()->user();
             $time_now = now() ;
             if ($user->code == $credentials["code"] && $time_now < $user->expired_at) {
-                // for activating the wo
-                $user->activation = true;
+                // for activating the User
+                $user->activation = 1;
                 $user->save();
 
                 //sending the response

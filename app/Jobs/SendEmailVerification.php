@@ -32,7 +32,12 @@ class SendEmailVerification implements ShouldQueue
     public function handle(): void
     {
         Log::info("Sending email to: " . $this->user->email);
-        Mail::to($this->user->email)->send(new OtpEmail($this->user->name , $this->user->code));
+        Mail::raw("Hello {$this->user->name}, your verification code is: {$this->user->code} .
+         This code will expire in 10 minutes, at {$this->user->expired_at}. ", function ($message) {
+            $message->to($this->user->email)
+                ->subject('Code Verification For Sylicon Expo');
+        });
+//Mail::to($this->user->email)->send(new OtpEmail($this->user->name , $this->user->code));
 //        event(OtpRequest::dispatch($this->user));
     }
 }
