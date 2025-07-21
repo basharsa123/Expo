@@ -17,6 +17,7 @@ class lecture extends Model implements HasMedia
         "started_at",
         "finished_at",
         "place",
+        "slots",
         "mentor",
         "mentor_job_title"
     ];

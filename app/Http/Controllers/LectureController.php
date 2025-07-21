@@ -55,6 +55,7 @@ class LectureController extends Controller
                     "description" => "max:255",
                     "date" => "required|date_format:Y-m-d",
                     "place"=>"required|string",
+                    "slots"=>"required|integer",
                     "started_at"=>"required||date_format:H:i",
                     "finished_at"=>"required||date_format:H:i",
                     "mentor"=>"required",
@@ -74,9 +75,10 @@ class LectureController extends Controller
                     "mentor_job_title.required" => "mentor job title is required",
                     "mentor_pic.required" => "mentor pic is required",
                     "mentor_pic.image" => "mentor_pic should be an image",
-                    "mentor_pic.mimes" => "Image file is not recognized , try files with jpeg, png,jpg,gif,svg"
+                    "mentor_pic.mimes" => "Image file is not recognized , try files with jpeg, png,jpg,gif,svg",
+                    "slots.required" => "slots is required",
+                    "slots.integer" => "slots should be a number",
                 ]);
-
             //?store
             $lecture_create = Lecture::create($credentials);
             $lecture_create->addMediaFromRequest('lecture_pic')->toMediaCollection("lecture_pic");

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Services\SlotAvailable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -23,6 +24,8 @@ class LectureResource extends JsonResource
                 "started_at" => $this->started_at->format("g:i A"),
                 "finished_at" => $this->finished_at->format("g:i A"),
                 "place" => $this->place,
+                "slots" => $this->slots,
+                "slots_available" => SlotAvailable::checkSlotAvailable($this) ,
                 "speaker" => $this->mentor,
                 "speaker_job_title" => $this->mentor_job_title ?? "no description available",
                 "speaker_imageUrl" => $this->getFirstMediaUrl("mentor_pic")

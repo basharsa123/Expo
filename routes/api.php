@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 //? Sanctum authentication system =_=
 Route::post('/tokens/create', function (Request $request) {
@@ -28,7 +29,7 @@ Route::resource("product" , \App\Http\Controllers\ProductController::class , ['e
 Route::resource("lecture" , \App\Http\Controllers\LectureController::class , ['except' => ['create']]);
 Route::resource("workshop" , \App\Http\Controllers\WorkshopController::class , ['only' => ['index' , "store" , "destroy"]]);
 Route::resource("registeration" , \App\Http\Controllers\RegisterationController::class , ['except' => ['create']]);
-//Route::resource("lecture_registration",\App\Http\Controllers\LectureRegistrationController::class , ['except'=> ['create']]);
+Route::resource("lecture_registration",\App\Http\Controllers\LectureRegistrationController::class , ['except'=> ['create']]);
 //?filter lecture by date
 Route::get("/filter/lecture/{date}", [\App\Http\Controllers\LectureController::class , "showFilterByDate"]);
 
@@ -42,3 +43,9 @@ Route::post('/register', [\App\Http\Controllers\TwoFactorController::class, 'reg
 Route::post('/verify_code', [\App\Http\Controllers\TwoFactorController::class, 'verifyCode'])->middleware('auth:sanctum');
 Route::post('/resend_code', [\App\Http\Controllers\TwoFactorController::class, 'reSendCode'])->middleware('auth:sanctum','NotActivated');
 });
+ Route::get('/qrcode', function (Request $request) {
+     $qrImage = QrCode::format('svg')
+         ->size(300)
+         ->generate('https://example.com');
+     return $qrImage;
+ });

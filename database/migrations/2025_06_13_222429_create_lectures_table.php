@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('date');
             $table->string("place");
             $table->string('mentor');
+            $table->integer('slots');
             $table->string('mentor_job_title');
             $table->time("started_at")->nullable();
             $table->time("finished_at")->nullable();
